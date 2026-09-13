@@ -1,0 +1,6 @@
+DEBT COMMAND MOBILE WEB APP - V8.1 ACCOUNT ISOLATION FIX
+
+READ:
+ACCOUNT_ISOLATION_TEST_JA.txt
+
+DO NOT RELEASE until both local and cloud isolation tests pass.

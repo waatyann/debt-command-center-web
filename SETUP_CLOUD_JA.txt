@@ -1,0 +1,118 @@
+﻿借金返済司令室 Web版 v6
+Supabaseクラウド接続手順
+
+このv6では、次の機能が追加されています。
+
+・メールアドレスで新規登録
+・ログイン
+・クラウドへデータ保存
+・別のPCやスマホでクラウドデータを読み込み
+・利用者ごとにデータを分離
+
+重要：
+Supabaseのプロジェクト作成と接続設定が完了するまでは、
+これまでどおりローカル保存版として動作します。
+
+
+【第1章　Supabaseのアカウントを作る】
+
+1. ブラウザで Supabase と検索します。
+2. 公式サイト supabase.com を開きます。
+3. Start your project を押します。
+4. GitHubアカウントなどで登録します。
+
+
+【第2章　新しいプロジェクトを作る】
+
+1. New project を押します。
+2. Organizationを選びます。
+3. Project nameへ次を入力します。
+
+debt-command-center
+
+4. Database Passwordへ、自分だけが分かる強いパスワードを入力します。
+5. Regionは、日本に近い地域を選びます。
+6. Freeプランを選び、Create new projectを押します。
+7. プロジェクト作成が終わるまで待ちます。
+
+
+【第3章　データ保存用テーブルを作る】
+
+1. Supabase左側メニューの SQL Editor を開きます。
+2. New query を押します。
+3. このフォルダ内の SUPABASE_SETUP.sql をメモ帳で開きます。
+4. 中身をすべてコピーします。
+5. SQL Editorへ貼り付けます。
+6. Runを押します。
+
+成功すると、利用者本人だけが自分のデータを読める設定を含む
+user_app_dataテーブルが作成されます。
+
+
+【第4章　接続情報を確認する】
+
+1. Supabase左側の Project Settings を開きます。
+2. API Keys または Data API を開きます。
+3. 次の2つを確認します。
+
+・Project URL
+・Publishable key または anon public key
+
+注意：
+service_roleキーやSecret keyは、絶対に使用・公開しないでください。
+
+
+【第5章　.env.localを作る】
+
+1. このフォルダ内の .env.local.example を右クリックします。
+2. コピーして、同じフォルダへ貼り付けます。
+3. コピーしたファイル名を次へ変更します。
+
+.env.local
+
+末尾に.txtを付けないでください。
+
+4. .env.localをメモ帳で開きます。
+5. 次の部分をSupabaseの情報へ置き換えます。
+
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_PUBLISHABLE_OR_ANON_KEY
+
+6. 上書き保存します。
+
+
+【第6章　アプリを起動する】
+
+1. RUN_APP.batをダブルクリックします。
+2. ブラウザで http://localhost:3000 を開きます。
+3. 下メニューの「管理」を押します。
+4. 「同期　ログイン・クラウド保存」を開きます。
+5. 新規登録を選びます。
+6. メールアドレスと6文字以上のパスワードを入力します。
+
+Supabaseのメール確認設定が有効な場合は、
+届いた確認メールのリンクを押してからログインします。
+
+
+【第7章　PCからスマホへデータを移す】
+
+PC側：
+1. クラウド同期画面でログインします。
+2. 「この端末のデータをクラウドへ保存」を押します。
+
+スマホ側：
+1. 同じアカウントでログインします。
+2. 「クラウドからこの端末へ読み込む」を押します。
+
+注意：
+自動で常時同期する方式ではありません。
+現在は、保存・読込ボタンを押して安全に同期する方式です。
+
+
+【重要な安全事項】
+
+・Publishable keyまたはanon public keyだけを使用してください。
+・service_roleキー、Secret key、データベースパスワードはアプリへ書かないでください。
+・SUPABASE_SETUP.sqlのRLSを必ず有効にしてください。
+・クラウド保存前にも端末バックアップを残してください。
+・借金情報を扱うため、テスト後すぐ一般公開せず、少人数で確認してください。

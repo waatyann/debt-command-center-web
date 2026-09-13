@@ -1,0 +1,62 @@
+﻿借金返済司令室 Web版 v7 公開準備手順
+
+【現在地】
+v7は、Supabase接続＋Vercel公開＋スマホホーム画面追加まで進めるための公開準備版です。
+
+【1 Supabase】
+1. supabase.com でプロジェクト作成
+2. SQL Editorで SUPABASE_SETUP.sql を実行
+3. Connect から Project URL と Publishable key を取得
+4. .env.local.example をコピーして .env.local に変更
+5. 次の2行を自分の値へ変更
+   NEXT_PUBLIC_SUPABASE_URL=Project URL
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=Publishable key
+
+Secret key / service_role / Database Password は絶対に入れないでください。
+
+【2 ローカル確認】
+RUN_APP.bat を起動
+→ 管理
+→ 同期
+→ 新規登録
+→ ログイン
+→ クラウド保存
+→ 読み込み
+
+【3 Vercel公開】
+1. GitHubで新規リポジトリを作る
+2. DebtCommandMobile_Web_v7 の中身をアップロード
+3. vercel.com にログイン
+4. Add New → Project
+5. GitHubリポジトリをImport
+6. Framework PresetがNext.jsになっていることを確認
+7. Environment Variablesへ
+   NEXT_PUBLIC_SUPABASE_URL
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+   を登録
+8. Deploy
+
+公開後は https://xxxxx.vercel.app のURLが発行されます。
+
+【4 Supabaseの認証URL】
+Vercel URLが決まったらSupabaseのAuthentication設定へ戻り、
+Site URLとRedirect URLへ本番URLを登録します。
+
+【5 スマホ】
+Android Chrome：
+メニュー → ホーム画面に追加 / アプリをインストール
+
+iPhone Safari：
+共有 → ホーム画面に追加
+
+【公開前チェック】
+□ 新規登録できる
+□ ログインできる
+□ クラウド保存できる
+□ 別端末で読み込める
+□ ログアウトできる
+□ PINロックが動く
+□ バックアップできる
+□ /privacy が開く
+□ テスト用アカウント同士で他人のデータが見えない
+□ 本物の借金情報ではなくテストデータで検証した

@@ -1,0 +1,35 @@
+﻿借金返済司令室 Web版 v8 Production Ready
+
+これは公開用コードの最終候補です。
+ただし、あなた専用のSupabaseとVercelアカウント設定だけは本人の操作が必要です。
+
+【最短公開ルート】
+
+1. Supabaseプロジェクトを作る
+2. SUPABASE_SETUP.sqlをSQL Editorで実行
+3. Project URLとPublishable keyを取得
+4. VercelへGitHub経由でこのフォルダをDeploy
+5. Vercel Environment Variablesへ登録
+   NEXT_PUBLIC_SUPABASE_URL
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+6. Deploy完了後の https://xxxxx.vercel.app を確認
+7. Supabase AuthenticationのSite URLをVercel URLへ変更
+8. PRODUCTION_CHECKLIST_JA.txtを上から全部確認
+9. 問題なければBOOTH購入者へURLを案内
+
+【重要】
+ブラウザ側へ入れてよいのはPublishable keyです。
+Secret key、service_role key、Database Passwordは絶対に公開しません。
+
+【スマホ】
+公開後はPCを起動する必要はありません。
+購入者はVercelのURLをChrome/Safariで開くだけです。
+ホーム画面へ追加すれば、アプリのように起動できます。
+
+【販売時のおすすめ表記】
+「スマホ対応Web版は先行提供中。iPhone/Androidのブラウザから利用できます。
+入力データはアカウントごとにクラウド保存され、PC・スマホ間で手動同期できます。」
+
+【注意】
+v8のクラウド同期は「保存」「読込」を利用者が押す手動同期です。
+複数端末で同時編集して自動マージする仕様ではありません。
